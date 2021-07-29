@@ -123,32 +123,53 @@ window.addEventListener('scroll', function(e) {
   }
 });
 
+var population = 1000000;
+
 function getScrollCount() {
   var body = document.documentElement || document.body;
   var total_height = prisoners.clientHeight;
   var scroll_percent = (body.scrollTop - prisoners.offsetTop + body.clientHeight) / total_height;
-  var count = Math.floor(scroll_percent * 2300000);
+  var count = Math.floor(scroll_percent * population);
   return count;
 }
 
-function setHeight() {
+function setBounds() {
   var browser_width = window.innerWidth || document.body.clientWidth;
-  var icons_per_card = 200;
-  var pixel_height_per_card = 500;
-  var pixel_width_per_card = 400;
+  var people_width = Math.floor((browser_width - 30) / 30) * 30;
+  var icons_per_card = 1;
+  var pixel_height_per_card = 60;
+  var pixel_width_per_card = 30;
 
   var cards_per_row = browser_width / pixel_width_per_card;
   var icons_per_row = icons_per_card * cards_per_row;
-  var number_of_rows = 2300000/icons_per_row;
+  var number_of_rows = population/icons_per_row;
 
   var height = Math.floor(number_of_rows * pixel_height_per_card);
   prisoners.style.height = height + "px";
+  prisoners.style.width = people_width + "px";
 
   if (!mute) {
     var thousand_height = Math.floor((1000/icons_per_row) * pixel_height_per_card);
     thousand.style.height = thousand_height + "px";
+    thousand.style.width = people_width + "px";
   }
+  document.documentElement.style.setProperty('--default-group-width', (people_width / 30) - 4);
+
+  document.querySelectorAll('.group').forEach((d) => {
+    let size = parseInt(d.getAttribute('size'));
+    let width = parseInt(getComputedStyle(d).getPropertyValue('--group-width'));
+    d.style.setProperty('--group-height', Math.floor(size / width));
+    d.style.setProperty('--blocker-width', Math.floor(size % width));
+    for (let i = 0; i < size; i++) {
+      let p = document.createElement('div');
+      p.classList.add('redpeople');
+      p.style.height = '60px';
+      p.style.width = '30px';
+      d.appendChild(p);
+    }
+  });
 }
-setHeight();
-window.addEventListener("orientationchange", setHeight);
-window.addEventListener("resize", setHeight);
+
+setBounds();
+window.addEventListener("orientationchange", setBounds);
+window.addEventListener("resize", setBounds);
