@@ -161,11 +161,11 @@ function setBounds() {
     d.style.setProperty('--group-height', Math.floor(size / width));
     d.style.setProperty('--blocker-width', Math.floor(size % width));
     for (let i = 0; i < size; i++) {
-      let p = document.createElement('div');
-      p.classList.add('redpeople');
-      p.style.height = '60px';
-      p.style.width = '30px';
-      d.appendChild(p);
+      // let p = document.createElement('div');
+      // p.classList.add('redpeople');
+      // p.style.height = '60px';
+      // p.style.width = '30px';
+      // d.appendChild(p);
     }
   });
 }

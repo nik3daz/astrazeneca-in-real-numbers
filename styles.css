@@ -389,12 +389,12 @@ p:last-child {
 }
 .side-icon {
   float: left;
-  width: 20px;
+  width: 60px;
   padding-right: 10px;
 }
 .blue,
 .red {
-  margin-bottom: 5000px;
+  margin-bottom: 6000px;
 }
 .floyd {
   height: 18000px;
@@ -507,7 +507,7 @@ p:last-child {
   margin-top: 100px;
 }
 .infobox-near {
-  margin-top: 1000px;
+  margin-top: 1200px;
 }
 .infobox-half {
   margin-top: 5000px;
