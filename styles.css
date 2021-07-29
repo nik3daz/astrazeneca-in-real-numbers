@@ -49,7 +49,7 @@ html, body {
   position: relative;
   display: flex;
   align-items: start;
-  justify-content: end;
+  justify-content: center;
   height: calc(var(--group-height) * 60px);
   margin-top: 6000px
 }
