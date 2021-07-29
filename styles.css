@@ -1,7 +1,3 @@
-:root {
-  --default-group-width: 30;
-}
-
 html, body {
   margin: 0;
   scroll-behavior: smooth;
@@ -35,11 +31,18 @@ html, body {
 .group .enclosure {
   position: absolute;
   top: 0;
-  left: calc(var(--group-x, 60px));
+  left: calc(var(--group-x, var(--people-margin)) * 30px);
   /* background: rgb(0, 0, 0, 0.5); */
   height: calc(var(--group-height) * 60px);
   width: calc(var(--group-width) * 30px);
   flex: 0 0 auto;
+}
+.group .blocker {
+  position: absolute;
+  bottom: -60px;
+  left: calc(var(--group-x, var(--people-margin)) * 30px);
+  height: 60px;
+  width: calc(var(--blocker-width) * 30px);
 }
 .group {
   --group-width: var(--default-group-width);
@@ -55,13 +58,6 @@ html, body {
 }
 .bg-covid {
   background: purple;
-}
-.group .blocker {
-  position: absolute;
-  bottom: -60px;
-  left: calc(var(--group-x, 60px));
-  height: 60px;
-  width: calc(var(--blocker-width) * 30px);
 }
 .fill {
   width: 100%;
@@ -139,6 +135,7 @@ h1 {
 html.black,
 html.blue,
 html.red,
+html.green,
 html.black-sparse,
 html.black body
 html.blue body

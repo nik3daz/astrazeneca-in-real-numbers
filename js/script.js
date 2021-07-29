@@ -3,6 +3,7 @@ var thousand = document.getElementById('thousand');
 var counter = document.getElementById('counter');
 var title = document.getElementById('title');
 var html = document.getElementsByTagName('html');
+var scrollPercent = document.getElementById('scrollPercent');
 var curve_wrapper_outer = document.getElementById('curve-wrapper-outer');
 var url_params = new URLSearchParams(window.location.search);
 var mute = url_params.get('mute');
@@ -121,6 +122,7 @@ window.addEventListener('scroll', function(e) {
   else {
     counter.innerHTML = '';
   }
+  scrollPercent.innerHTML = Math.floor(getScrollCount() / 10000) + '%';
 });
 
 var population = 1000000;
@@ -135,10 +137,12 @@ function getScrollCount() {
 
 function setBounds() {
   var browser_width = window.innerWidth || document.body.clientWidth;
-  var people_width = Math.floor((browser_width - 30) / 30) * 30;
+  var people_width = Math.floor((browser_width - 30) / 30);
   var icons_per_card = 1;
   var pixel_height_per_card = 60;
   var pixel_width_per_card = 30;
+
+  var people_margin = Math.floor(people_width / 3);
 
   var cards_per_row = browser_width / pixel_width_per_card;
   var icons_per_row = icons_per_card * cards_per_row;
@@ -146,14 +150,16 @@ function setBounds() {
 
   var height = Math.floor(number_of_rows * pixel_height_per_card);
   prisoners.style.height = height + "px";
-  prisoners.style.width = people_width + "px";
+  prisoners.style.width = (people_width * 30) + "px";
 
   if (!mute) {
     var thousand_height = Math.floor((1000/icons_per_row) * pixel_height_per_card);
     thousand.style.height = thousand_height + "px";
-    thousand.style.width = people_width + "px";
+    thousand.style.width = (people_width * 30) + "px";
   }
-  document.documentElement.style.setProperty('--default-group-width', (people_width / 30) - 4);
+  document.documentElement.style.setProperty('--default-group-width', people_width - 2 * people_margin);
+  document.documentElement.style.setProperty('--people-width', people_width);
+  document.documentElement.style.setProperty('--people-margin', people_margin);
 
   document.querySelectorAll('.group').forEach((d) => {
     let size = parseInt(d.getAttribute('size'));
