@@ -16,12 +16,14 @@ html, body {
   background-color: #e2dcc6;
 }
 .yellowpeople {
+  margin: auto;
   width: calc(var(--group-width) * 30px);
   height: calc(var(--group-height) * 60px);
   background-image: url('img/person/yellow.svg');
   background-size: 30px;
 }
 .redpeople {
+  margin: auto;
   width: calc(var(--group-width) * 30px);
   height: calc(var(--group-height) * 60px);
   background-image: url('img/person/red.svg');

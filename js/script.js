@@ -84,18 +84,18 @@ if (!mute) {
   document.querySelectorAll('.curve-section').forEach(function(target){
     curveObserver.observe(target);
   });
-  var letterObserver = new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if (entry.isIntersecting) {
-        entry.target.classList.add('animate');
-      }
-      else {
-        entry.target.classList.remove('animate');
-      }
-    })
-  })
-  var letters = document.getElementById('animated-letters');
-  letterObserver.observe(letters);
+  // var letterObserver = new IntersectionObserver(function(entries){
+  //   entries.forEach(function(entry){
+  //     if (entry.isIntersecting) {
+  //       entry.target.classList.add('animate');
+  //     }
+  //     else {
+  //       entry.target.classList.remove('animate');
+  //     }
+  //   })
+  // })
+  // var letters = document.getElementById('animated-letters');
+  // letterObserver.observe(letters);
 
   function toggleExpand(outer, inner) {
     var outerEl = document.getElementById(outer);
@@ -142,7 +142,7 @@ function setBounds() {
   var pixel_height_per_card = 60;
   var pixel_width_per_card = 30;
 
-  var people_margin = Math.floor(people_width / 3);
+  var people_margin = Math.floor(people_width / 5);
 
   var cards_per_row = browser_width / pixel_width_per_card;
   var icons_per_row = icons_per_card * cards_per_row;
@@ -153,9 +153,9 @@ function setBounds() {
   prisoners.style.width = (people_width * 30) + "px";
 
   if (!mute) {
-    var thousand_height = Math.floor((1000/icons_per_row) * pixel_height_per_card);
-    thousand.style.height = thousand_height + "px";
-    thousand.style.width = (people_width * 30) + "px";
+    // var thousand_height = Math.floor((1000/icons_per_row) * pixel_height_per_card);
+    // thousand.style.height = thousand_height + "px";
+    // thousand.style.width = (people_width * 30) + "px";
   }
   document.documentElement.style.setProperty('--default-group-width', people_width - 2 * people_margin);
   document.documentElement.style.setProperty('--people-width', people_width);
